@@ -36,7 +36,8 @@ export class UsersController {
   }
 
   @Delete(':id')
-  softDelete(@Param('id') id: string): Promise<void> {
-    return this.usersService.softDelete(id);
+  async softDelete(@Param('id') id: string): Promise<string> {
+    await this.usersService.softDelete(id);
+    return 'Deleted successfully';
   }
 }
