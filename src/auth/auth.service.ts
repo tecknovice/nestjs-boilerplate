@@ -8,7 +8,7 @@ export class AuthService {
 
   async validateUser(email: string, pass: string): Promise<any> {
     const user = await this.usersService.findByEmail(email);
-    if (user && user.password === pass) {
+    if (user && user.password === pass && user.deletedAt === null) {
       const result = Object.assign({}, user);
       delete result.password;
       return result;
@@ -22,5 +22,4 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
   }
-
 }
