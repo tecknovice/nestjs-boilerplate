@@ -12,7 +12,6 @@ export class UsersController {
 
   @Get('profile')
   getProfile(@Request() req) {
-    console.log('req.user', req);
     return this.usersService.findOne(req.user.id);
   }
 
